@@ -1,53 +1,26 @@
 var controllers = angular.module('myApp.controllers', []);
-controllers.controller('ContactPageController', ['$scope', function($scope) {
-    $scope.contacts = [
-        {
-            name: 'Mickey',
-            email: 'bigm@world.com',
-            phone: '1 (800) BIG-EARS'
-        },
-        {
-            name: 'Donald',
-            email: 'beakman@disney.com',
-            phone: '1 (800) QUA-CKER'
-        },
-        {
-            name: 'gooFy',
-            email: 'gauwersh@disney.com',
-            phone: '1 (800) IFO-RGOT'
-        },
-        {
-            name: 'Woody',
-            email: 'thesheriff@disney.com',
-            phone: '1 (800) BIG-STAR'
-        }
-    ]
+controllers.controller('ContactPageController', ['$scope', 'ContactFactory', function($scope, ContactFactory) {
+    $scope.contacts = ContactFactory.getAllContacts();
 }]);
 
-controllers.controller('ContactDetailController', ['$scope', '$routeParams', function($scope, $routeParams) {
-    var contactid = $routeParams.id;
-    var contacts = [
-        {
-            name: 'Mickey',
-            email: 'bigm@world.com',
-            phone: '1 (800) BIG-EARS'
-        },
-        {
-            name: 'Donald',
-            email: 'beakman@disney.com',
-            phone: '1 (800) QUA-CKER'
-        },
-        {
-            name: 'gooFy',
-            email: 'gauwersh@disney.com',
-            phone: '1 (800) IFO-RGOT'
-        },
-        {
-            name: 'Woody',
-            email: 'thesheriff@disney.com',
-            phone: '1 (800) BIG-STAR'
-        }
-    ];
+controllers.controller('ContactDetailController', ['$scope', '$routeParams', 'ContactFactory' , function($scope, $routeParams, ContactFactory) {
+    var name = $routeParams.name;
     
-    $scope.contact = contacts[contactid];
+    $scope.singleContact = ContactFactory.singleContact(name);
+    console.log(contact.name);
 }]);
+
+
+
+// $scope.getSingBlogs = function() {
+//         var postId = $routeParams.id;
+        
+//         BlogEntry.get({id: postId}).$promise.then(function(data) {
+//             $scope.blog = data;
+//         })
+//         // $scope.blog = BlogEntry[blog_id];
+//     }
+//     $scope.getSingBlogs(); //
+//     $scope.rtrnBlogsPage = function() {
+//         $location.path("/blogposts");
+//       };

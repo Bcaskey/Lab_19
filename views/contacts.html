@@ -1,8 +1,8 @@
 <div class="contacts">
     <div class="contact" ng-repeat="contact in contacts">
-        <h1>{{contact.name}}</h1>
+        <a href="#contacts/{{contact.name}}"><h1>{{contact.name}}</h1></a>
         <h3>{{contact.email}}</h3>
         <p>{{contact.phone}}</p>
-        <a href="#contacts/{{$index}}">More Info</a>
+        <!--<a href="#contacts/{{$index}}">More Info</a>-->
     </div>
 </div>
